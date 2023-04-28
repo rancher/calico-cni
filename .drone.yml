@@ -53,33 +53,6 @@ steps:
       event: tag
 ---
 kind: pipeline
-name: arm
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
-  - name: download
-    image: alpine
-    commands:
-      - ./scripts/download-arm
-  - name: docker
-    image: plugins/docker
-    settings:
-      dockerfile: Dockerfile
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-      repo: rancher/calico-cni
-      tag: ${DRONE_TAG}-linux-arm
-    when:
-      instance:
-        - drone-publish.rancher.io
-      event: tag
----
-kind: pipeline
 name: manifest
 
 steps:
@@ -100,4 +73,3 @@ steps:
 depends_on:
 - amd64
 - arm64
-- arm
