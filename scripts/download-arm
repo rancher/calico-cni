@@ -1,7 +1,0 @@
-#!/bin/sh
-
-mkdir -p artifacts
-
-wget https://github.com/rancher/plugins/releases/download/v1.0.0-rancher1/portmap-arm -O artifacts/portmap
-
-chmod +x artifacts/portmap
